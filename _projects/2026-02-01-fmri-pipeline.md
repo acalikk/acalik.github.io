@@ -3,7 +3,7 @@ title: fMRI Analysis Pipeline (GLM + RSA)
 subtitle: Parallelized subject-level analyses and QC-driven data inclusion
 summary: Optimized a scalable pipeline across ~30 subjects, combining QC + behavioral filtering with parallel execution.
 excerpt: Optimized a scalable pipeline across ~30 subjects, combining QC + behavioral filtering with parallel execution.
-areas=[Data & Compute, Neuroengineering]
+areas: [Data & Compute, Neuroengineering]
 tags: [python, data, validation, performance]
 tools: [Python, HPC, Git]
 order: 3
