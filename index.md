@@ -23,9 +23,9 @@ excerpt: ""
     </p>
 
     <p style="margin:0; font-size:0.98rem; opacity:.85;">
-      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/aybuke-calik" target="_blank" rel="noopener">LinkedIn</a>
       &nbsp;·&nbsp;
-      <a href="mailto:YOUR.EMAIL@DOMAIN.COM">Email</a>
+      <a href="mailto:aybuke_calik@hotmail.com">Email</a>
       &nbsp;·&nbsp;
       <a href="https://github.com/YOUR-GITHUB" target="_blank" rel="noopener">GitHub</a>
     </p>
