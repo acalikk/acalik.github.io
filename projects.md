@@ -45,7 +45,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
       data-title="{{ p.title | downcase }}"
       data-subtitle="{{ p.subtitle | default: '' | downcase }}"
       data-summary="{{ p.summary | default: p.excerpt | default: '' | downcase }}"
-      data-areas="{% if p.areas %}{{ p.areas | join: ',' | downcase }}{% endif %}"
+      data-areas="{% if p.areas %}{{ p.areas | join: ',' | downcase | replace: ' & ', '-' | replace: ' ', '-' }}{% endif %}"
       data-tags="{% if p.tags %}{{ p.tags | join: ',' | downcase }}{% endif %}"
       data-tools="{% if p.tools %}{{ p.tools | join: ',' | downcase }}{% endif %}">
 
@@ -80,6 +80,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
 </div>
 
 <script>
+/* projects-filter-v2 */
 (function () {
   const cards = Array.from(document.querySelectorAll(".project-card"));
   const searchBox = document.getElementById("searchBox");
@@ -89,23 +90,27 @@ A selection of projects with focus on **what I built**, **how I tested/validated
   const clearBtn = document.getElementById("clearBtn");
   const toggleMoreTagsBtn = document.getElementById("toggleMoreTags");
 
-  // Display labels (nice) + internal keys (lowercase)
+  // Use URL-safe keys so we never fight '&' / escaping
   const AREAS = [
     { label: "Biosensing", key: "biosensing" },
     { label: "Neuroengineering", key: "neuroengineering" },
-    { label: "Hardware & Testing", key: "hardware & testing" },
-    { label: "Data & Compute", key: "data & compute" }
+    { label: "Hardware & Testing", key: "hardware-testing" },
+    { label: "Data & Compute", key: "data-compute" }
   ];
 
-  let selectedAreas = new Set(); // stores keys (lowercase)
-  let selectedTags = new Set();  // stores tags (lowercase)
+  let selectedAreas = new Set(); // keys
+  let selectedTags = new Set();  // lowercase tags
 
   const TOP_N = 12;
   let showAllTags = false;
 
   function splitList(s){
-    return (s || "").split(",").map(x => x.trim().toLowerCase()).filter(Boolean);
+    return (s || "")
+      .split(",")
+      .map(x => x.trim().toLowerCase())
+      .filter(Boolean);
   }
+
   function getTags(card){ return splitList(card.dataset.tags); }
   function getAreas(card){ return splitList(card.dataset.areas); }
 
@@ -116,12 +121,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
     .sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))
     .map(([t,_]) => t);
 
-  function renderChips(){
-    renderAreas();
-    renderTags();
-  }
-
-  function makeChip(label, isActive, onClick){
+  function makeChip(label, active, onClick){
     const btn = document.createElement("button");
     btn.type = "button";
     btn.textContent = label;
@@ -129,8 +129,8 @@ A selection of projects with focus on **what I built**, **how I tested/validated
     btn.style.cssText =
       "padding:6px 10px;border-radius:999px;cursor:pointer;font-size:13px;" +
       "border:1px solid rgba(127,127,127,.35);background:transparent;";
-    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
-    btn.style.background = isActive ? "rgba(127,127,127,.18)" : "transparent";
+    btn.setAttribute("aria-pressed", active ? "true" : "false");
+    btn.style.background = active ? "rgba(127,127,127,.18)" : "transparent";
     btn.addEventListener("click", onClick);
     return btn;
   }
@@ -142,7 +142,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
       const chip = makeChip(a.label, active, () => {
         if (selectedAreas.has(a.key)) selectedAreas.delete(a.key);
         else selectedAreas.add(a.key);
-        renderAreas();   // only rerender areas
+        renderAreas();
         filter();
       });
       areaBar.appendChild(chip);
@@ -152,17 +152,24 @@ A selection of projects with focus on **what I built**, **how I tested/validated
   function renderTags(){
     tagBar.innerHTML = "";
     const tagsToShow = showAllTags ? sortedTags : sortedTags.slice(0, TOP_N);
+
     tagsToShow.forEach(t => {
       const active = selectedTags.has(t);
       const chip = makeChip(t, active, () => {
         if (selectedTags.has(t)) selectedTags.delete(t);
         else selectedTags.add(t);
-        renderTags();    // only rerender tags
+        renderTags();
         filter();
       });
       tagBar.appendChild(chip);
     });
+
     toggleMoreTagsBtn.textContent = showAllTags ? "Show less" : "Show more";
+  }
+
+  function renderChips(){
+    renderAreas();
+    renderTags();
   }
 
   // OR logic
