@@ -1,8 +1,19 @@
 title: Aybüke Çalık Yüksel
-description: Bioelectronics • Neuroengineering • Projects • Hobbies
-url: "https://YOUR-USERNAME.github.io"  # update
-theme: minima
+description: Bioelectronics • Neuroengineering • Hardware + testing mindset
 
+# Minimal Mistakes
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "dark"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+
+# Build settings
+markdown: kramdown
+permalink: /:categories/:title/
+
+# Your Projects collection (from _projects/)
 collections:
   projects:
     output: true
@@ -11,8 +22,15 @@ collections:
 defaults:
   - scope:
       path: ""
+    values:
+      layout: single
+      author_profile: false
+      classes: wide
+
+  - scope:
+      path: ""
       type: projects
     values:
-      layout: project
-
-markdown: kramdown
+      layout: single
+      author_profile: false
+      classes: wide
