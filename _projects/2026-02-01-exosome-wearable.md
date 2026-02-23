@@ -3,6 +3,7 @@ title: Wearable Exosome Sensing (GFET)
 subtitle: On-skin biosensing R&D with electrochemical + reliability testing
 summary: Built and validated a sensing workflow for GFET-based exosome detection, focusing on test design and repeatable characterization.
 excerpt: Built and validated a sensing workflow for GFET-based exosome detection, focusing on test design and repeatable characterization.
+areas: [Biosensing, Hardware & Testing]
 tags: [biosensors, testing, electrochemistry, wearable]
 tools: [Python, MATLAB, lab instrumentation]
 order: 1
