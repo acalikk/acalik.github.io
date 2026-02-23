@@ -15,10 +15,9 @@ excerpt: ""
   </div>
 
   <div style="flex:1 1 360px; min-width:280px;">
-    <h1 style="margin:0 0 10px 0; font-size:2.1rem;">Aybüke Çalık Yüksel</h1>
 
     <p style="margin:0 0 14px 0; font-size:1.05rem; line-height:1.6; opacity:.9;">
-      I design and validate bioelectronic systems, with a focus on sensing interfaces and experimental characterization.
+      I am recent MSc graduate specializing design and validate bioelectronic systems, with a focus on sensing interfaces and experimental characterization.
       My approach combines hands-on hardware development with structured testing and quantitative analysis.
     </p>
 
