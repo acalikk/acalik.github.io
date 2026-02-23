@@ -1,0 +1,18 @@
+title: Aybüke Çalık Yüksel
+description: Bioelectronics • Neuroengineering • Projects • Hobbies
+url: "https://YOUR-USERNAME.github.io"  # update
+theme: minima
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
+markdown: kramdown
