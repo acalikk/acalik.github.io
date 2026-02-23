@@ -1,9 +1,8 @@
 ---
 layout: default
 title: Projects
-permalink: /projects/
+permalink: /_projects/
 ---
-
 # Projects
 A selection of projects with focus on **what I built**, **how I tested/validated**, and **measurable outcomes**.
 
