@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<p class="muted"><a href="/projects/">← Back to Projects</a></p>
+
+<h1>{{ page.title }}</h1>
+<p class="muted">{{ page.subtitle }}</p>
+
+{% if page.tags %}
+  <div class="tags">
+    {% for t in page.tags %}
+      <span class="tag">{{ t }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<hr style="border:0; border-top:1px solid #e6e6e6; margin:16px 0;" />
+
+{{ content }}
+
+{% if page.links %}
+  <hr style="border:0; border-top:1px solid #e6e6e6; margin:16px 0;" />
+  <h2>Links</h2>
+  <ul>
+    {% for l in page.links %}
+      <li><a href="{{ l.url }}">{{ l.label }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
