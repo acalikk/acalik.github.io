@@ -18,7 +18,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
       data-title="{{ p.title | downcase }}"
       data-subtitle="{{ p.subtitle | default: '' | downcase }}"
       data-tags="{% if p.tags %}{{ p.tags | join: ',' | downcase }}{% endif %}">
-      <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
+      <h3><a href="{{ p.url | relative_url}}">{{ p.title }}</a></h3>
       {% if p.subtitle %}<p class="muted" style="margin:0;">{{ p.subtitle }}</p>{% endif %}
       {% if p.summary %}<p style="margin:10px 0 0 0;">{{ p.summary }}</p>{% endif %}
       <div class="meta">
