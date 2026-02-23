@@ -1,7 +1,8 @@
 ---
-layout: default
+layout: single
 title: Projects
 permalink: /projects/
+classes: wide
 ---
 # Projects
 A selection of projects with focus on **what I built**, **how I tested/validated**, and **measurable outcomes**.
