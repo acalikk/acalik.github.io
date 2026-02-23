@@ -24,7 +24,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
     </button>
   </div>
 
-  <details id="tagPanel" style="margin-top:12px;">
+  <details id="tagPanel" style="margin-top:12px;" open>
     <summary style="cursor:pointer;">Tags</summary>
     <div id="tagBar" style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;"></div>
     <div style="margin-top:10px;">
@@ -42,12 +42,12 @@ A selection of projects with focus on **what I built**, **how I tested/validated
   {% assign all_projects = site.projects | sort: "order" %}
   {% for p in all_projects %}
     <article class="project-card" style="grid-column: span 12; padding:16px; border-radius:14px;"
-      data-title="{{ p.title | downcase | escape }}"
-      data-subtitle="{{ p.subtitle | default: '' | downcase | escape }}"
-      data-summary="{{ p.summary | default: p.excerpt | default: '' | downcase | escape }}"
-      data-areas="{% if p.areas %}{{ p.areas | join: ',' | escape }}{% endif %}"
-      data-tags="{% if p.tags %}{{ p.tags | join: ',' | downcase | escape }}{% endif %}"
-      data-tools="{% if p.tools %}{{ p.tools | join: ',' | downcase | escape }}{% endif %}">
+      data-title="{{ p.title | downcase }}"
+      data-subtitle="{{ p.subtitle | default: '' | downcase }}"
+      data-summary="{{ p.summary | default: p.excerpt | default: '' | downcase }}"
+      data-areas="{% if p.areas %}{{ p.areas | join: ',' | downcase }}{% endif %}"
+      data-tags="{% if p.tags %}{{ p.tags | join: ',' | downcase }}{% endif %}"
+      data-tools="{% if p.tools %}{{ p.tools | join: ',' | downcase }}{% endif %}">
 
       <h3 style="margin:0 0 6px 0;">
         <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
@@ -89,48 +89,62 @@ A selection of projects with focus on **what I built**, **how I tested/validated
   const clearBtn = document.getElementById("clearBtn");
   const toggleMoreTagsBtn = document.getElementById("toggleMoreTags");
 
-  const AREAS = ["Biosensing", "Neuroengineering", "Hardware & Testing", "Data & Compute"];
-  let selectedAreas = new Set();
-  let selectedTags = new Set();
+  // Display labels (nice) + internal keys (lowercase)
+  const AREAS = [
+    { label: "Biosensing", key: "biosensing" },
+    { label: "Neuroengineering", key: "neuroengineering" },
+    { label: "Hardware & Testing", key: "hardware & testing" },
+    { label: "Data & Compute", key: "data & compute" }
+  ];
 
-  const tagCounts = new Map();
+  let selectedAreas = new Set(); // stores keys (lowercase)
+  let selectedTags = new Set();  // stores tags (lowercase)
+
   const TOP_N = 12;
   let showAllTags = false;
 
   function splitList(s){
-    return (s || "").split(",").map(x => x.trim()).filter(Boolean);
+    return (s || "").split(",").map(x => x.trim().toLowerCase()).filter(Boolean);
   }
   function getTags(card){ return splitList(card.dataset.tags); }
   function getAreas(card){ return splitList(card.dataset.areas); }
 
-  // tag frequency
+  // Collect tag frequency for top tags
+  const tagCounts = new Map();
   cards.forEach(c => getTags(c).forEach(t => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
   const sortedTags = Array.from(tagCounts.entries())
     .sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))
     .map(([t,_]) => t);
 
-  function makeChip(label, setRef){
+  function renderChips(){
+    renderAreas();
+    renderTags();
+  }
+
+  function makeChip(label, isActive, onClick){
     const btn = document.createElement("button");
     btn.type = "button";
     btn.textContent = label;
     btn.className = "chip";
-    btn.style.cssText = "padding:6px 10px;border-radius:999px;cursor:pointer;font-size:13px;border:1px solid rgba(127,127,127,.35);background:transparent;";
-    btn.setAttribute("aria-pressed", "false");
-    btn.addEventListener("click", () => {
-      if (setRef.has(label)) setRef.delete(label);
-      else setRef.add(label);
-      renderChips();
-      filter();
-    });
+    btn.style.cssText =
+      "padding:6px 10px;border-radius:999px;cursor:pointer;font-size:13px;" +
+      "border:1px solid rgba(127,127,127,.35);background:transparent;";
+    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+    btn.style.background = isActive ? "rgba(127,127,127,.18)" : "transparent";
+    btn.addEventListener("click", onClick);
     return btn;
   }
 
   function renderAreas(){
     areaBar.innerHTML = "";
     AREAS.forEach(a => {
-      const chip = makeChip(a, selectedAreas);
-      chip.setAttribute("aria-pressed", selectedAreas.has(a) ? "true" : "false");
-      chip.style.background = selectedAreas.has(a) ? "rgba(127,127,127,.18)" : "transparent";
+      const active = selectedAreas.has(a.key);
+      const chip = makeChip(a.label, active, () => {
+        if (selectedAreas.has(a.key)) selectedAreas.delete(a.key);
+        else selectedAreas.add(a.key);
+        renderAreas();   // only rerender areas
+        filter();
+      });
       areaBar.appendChild(chip);
     });
   }
@@ -139,19 +153,24 @@ A selection of projects with focus on **what I built**, **how I tested/validated
     tagBar.innerHTML = "";
     const tagsToShow = showAllTags ? sortedTags : sortedTags.slice(0, TOP_N);
     tagsToShow.forEach(t => {
-      const chip = makeChip(t, selectedTags);
-      chip.setAttribute("aria-pressed", selectedTags.has(t) ? "true" : "false");
-      chip.style.background = selectedTags.has(t) ? "rgba(127,127,127,.18)" : "transparent";
+      const active = selectedTags.has(t);
+      const chip = makeChip(t, active, () => {
+        if (selectedTags.has(t)) selectedTags.delete(t);
+        else selectedTags.add(t);
+        renderTags();    // only rerender tags
+        filter();
+      });
       tagBar.appendChild(chip);
     });
     toggleMoreTagsBtn.textContent = showAllTags ? "Show less" : "Show more";
   }
 
+  // OR logic
   function matchesAreas(card){
     if (selectedAreas.size === 0) return true;
     const areas = new Set(getAreas(card));
     for (const a of selectedAreas){
-      if (areas.has(a)) return true; // OR logic
+      if (areas.has(a)) return true;
     }
     return false;
   }
@@ -160,7 +179,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
     if (selectedTags.size === 0) return true;
     const tags = new Set(getTags(card));
     for (const t of selectedTags){
-      if (tags.has(t)) return true; // OR logic
+      if (tags.has(t)) return true;
     }
     return false;
   }
@@ -177,9 +196,11 @@ A selection of projects with focus on **what I built**, **how I tested/validated
       const tools = c.dataset.tools || "";
       const areas = c.dataset.areas || "";
 
-      const matchesSearch = !q || title.includes(q) || subtitle.includes(q) || summary.includes(q) || tags.includes(q) || tools.includes(q) || areas.toLowerCase().includes(q);
-      const show = matchesSearch && matchesAreas(c) && matchesTags(c);
+      const matchesSearch =
+        !q || title.includes(q) || subtitle.includes(q) || summary.includes(q) ||
+        tags.includes(q) || tools.includes(q) || areas.includes(q);
 
+      const show = matchesSearch && matchesAreas(c) && matchesTags(c);
       c.style.display = show ? "" : "none";
       if (show) visible++;
     });
@@ -197,15 +218,13 @@ A selection of projects with focus on **what I built**, **how I tested/validated
     selectedAreas = new Set();
     selectedTags = new Set();
     showAllTags = false;
-    renderAreas();
-    renderTags();
+    renderChips();
     filter();
   });
 
   searchBox.addEventListener("input", filter);
 
-  renderAreas();
-  renderTags();
+  renderChips();
   filter();
 })();
 </script>
