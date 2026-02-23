@@ -1,42 +1,36 @@
 ---
-layout: default
-title: Home
+layout: splash
+title: " "
+permalink: /
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.55"
+  teaser: /assets/images/teaser.jpg
+excerpt: "Bioelectronics • Neuroengineering • Hardware + testing mindset"
+feature_row:
+  - image_path: /assets/images/project.jpg
+    alt: "Projects"
+    title: "Projects"
+    excerpt: "Selected work with clear contributions, validation steps, and outcomes."
+    url: /projects/
+    btn_label: "View projects"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/cv.jpg
+    alt: "CV"
+    title: "CV"
+    excerpt: "A detailed online CV plus a 1-page PDF download."
+    url: /cv/
+    btn_label: "Open CV"
+    btn_class: "btn--primary"
+  - image_path: /assets/images/hobbies.jpg
+    alt: "Hobbies"
+    title: "Hobbies"
+    excerpt: "Photography, drawing, and personal projects."
+    url: /hobbies/
+    btn_label: "See hobbies"
+    btn_class: "btn--primary"
 ---
 
-# Aybüke Çalık Yüksel
-<p class="lead">Bioelectronics • Neuroengineering • Hardware + testing mindset</p>
+Hi, I’m **Aybüke Çalık Yüksel** — an engineer working at the intersection of **bioelectronics, sensing, and system validation**. I enjoy building physical systems, designing test setups, and turning measurements into reliable insights.
 
-<p>
-  <a class="chip" href="{{ '/projects/' | relative_url }}">View projects</a>
-  <a class="chip" href="{{ '/cv/' | relative_url }}">CV</a>
-  <a class="chip" href="{{ '/hobbies/' | relative_url }}">Hobbies</a>
-</p>
-
-## Featured projects
-<div class="grid">
-  {% assign featured = site.projects | sort: "order" | slice: 0, 3 %}
-  {% for p in featured %}
-    <div class="card col-6">
-      <h2 style="margin:0 0 6px 0;">
-        <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-      </h2>
-      {% if p.subtitle %}<p class="muted" style="margin:0;">{{ p.subtitle }}</p>{% endif %}
-      {% if p.summary %}<p style="margin:10px 0 0 0;">{{ p.summary }}</p>{% endif %}
-      <div style="margin-top:8px;">
-        {% for t in p.tags %}
-          {% assign slug = t | downcase | replace: ' ', '-' %}
-          <span class="tag tag-{{ slug }}">{{ t }}</span>
-        {% endfor %}
-      </div>
-    </div>
-  {% endfor %}
-</div>
-
-<p style="margin-top:14px;">
-  <a class="chip" href="{{ '/projects/' | relative_url }}">View all projects →</a>
-</p>
-
-## Contact
-- LinkedIn: (add)
-- GitHub: (add)
-- Email: (add)
+{% include feature_row %}
