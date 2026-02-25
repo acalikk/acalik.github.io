@@ -35,35 +35,41 @@ html, body,
 
 /* ===== Header (remove white rectangle by forcing all nav wrappers) ===== */
 .masthead,
+.masthead * ,
+.greedy-nav,
+.greedy-nav * {
+  background-color: #542929!important;
+  background: #542929 !important;
+  box-shadow: none !important;
+}
+
+/* Remove any theme borders/shadows that can appear as white strips */
+.masthead {
+  border-bottom: 0 !important;
+}
+
 .masthead__inner-wrap,
 .masthead__menu,
 .greedy-nav,
 .greedy-nav .visible-links,
-.greedy-nav .hidden-links{
-  background: var(--header-bg) !important;
+.greedy-nav .hidden-links,
+.greedy-nav__toggle,
+.greedy-nav__toggle-label {
+  background: #542929 !important;
 }
 
-.masthead{
-  border-bottom: 1px solid rgba(234, 224, 213, 0.18);
+/* Header text colors */
+.site-title {
+  color: #EAE0D5 !important;
 }
 
-.site-title{
+.greedy-nav a {
   color: #EAE0D5 !important;
   font-weight: 650;
-  letter-spacing: 0.3px;
 }
 
-.greedy-nav a{
-  color: #EAE0D5 !important;
-  font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 10px;
-  transition: background .15s ease, color .15s ease;
-}
-
-.greedy-nav a:hover{
+.greedy-nav a:hover {
   color: #FFFFFF !important;
-  background: rgba(234, 224, 213, 0.12);
 }
 
 /* ===== Links (global) ===== */
