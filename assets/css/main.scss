@@ -33,16 +33,18 @@ html, body,
   color: var(--text);
 }
 
-/* Target the main area between header and footer for the vertical centering */
-.initial-content, 
-.page__inner-wrap {
+/* ===== Vertical Centering: HOMEPAGE ONLY ===== */
+/* By prefixing with .layout--splash, this won't affect CV or Projects pages */
+.layout--splash .initial-content, 
+.layout--splash .page__inner-wrap {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important; /* Vertically centers the hero */
-  /* 160px accounts for the estimated height of your masthead + footer */
+  justify-content: center !important; 
   min-height: calc(100vh - 160px) !important; 
   margin: 0 auto !important;
+  padding: 0 !important; /* Removes default theme padding that offsets the center */
 }
+
 
 /* ===== Header (remove white rectangle by forcing all nav wrappers) ===== */
 .masthead,
