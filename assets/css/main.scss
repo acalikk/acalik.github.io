@@ -1,0 +1,128 @@
+---
+# Only the triple-dash front matter is required for Jekyll to process SCSS.
+---
+
+@import "minimal-mistakes";
+
+/* ===== Your custom styles below ===== */
+
+:root{
+  --header-bg: #0F172A;
+  --page-bg:   #F5F7FA;
+  --text:      #1E293B;
+  --muted:     #475569;
+  --link:      #2563EB;
+  --link-hover:#1E40AF;
+
+  --chip-bg:   #E2E8F0;
+  --chip-text: #1E293B;
+  --chip-sel:  #2563EB;
+  --chip-sel-text:#FFFFFF;
+
+  --card-border: rgba(15, 23, 42, 0.12);
+}
+
+/* page background */
+body{
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+/* header */
+.masthead,
+.masthead__inner-wrap{
+  background: var(--header-bg) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.site-title{
+  color: #F8FAFC !important;
+  font-weight: 650;
+  letter-spacing: 0.3px;
+}
+
+.greedy-nav a{
+  color: #93C5FD !important; /* soft blue for tabs */
+  font-weight: 550;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background .15s ease, color .15s ease;
+}
+
+.greedy-nav a:hover{
+  color: #FFFFFF !important;
+  background: rgba(255,255,255,0.08);
+}
+
+/* links */
+a{ color: var(--link); }
+a:hover{ color: var(--link-hover); }
+
+/* homepage hero */
+.home-hero{
+  display:flex;
+  gap:34px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  margin-top: 18px;
+  margin-bottom: 22px;
+}
+
+.home-hero .photo img{
+  width: 320px;
+  max-width: 92vw;
+  height: auto;
+  border-radius: 10px; /* rectangular */
+  border: 1px solid var(--card-border);
+  background: #fff;
+}
+
+.home-hero .content{
+  flex: 1 1 380px;
+  min-width: 280px;
+}
+
+.home-hero .kicker{
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 10px 0;
+}
+
+.home-hero h1{
+  margin: 0 0 10px 0;
+  font-size: 2.2rem;
+}
+
+.home-hero .summary{
+  margin: 0 0 14px 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.home-hero .contacts{
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+.section-divider{
+  opacity: .25;
+  margin: 10px 0 26px 0;
+}
+
+/* chips (Projects page) */
+.chip,
+.tag-chip{
+  background: var(--chip-bg) !important;
+  color: var(--chip-text) !important;
+  border: 1px solid rgba(15,23,42,0.12) !important;
+}
+
+.chip[aria-pressed="true"],
+.tag-chip[aria-pressed="true"]{
+  background: var(--chip-sel) !important;
+  color: var(--chip-sel-text) !important;
+}
