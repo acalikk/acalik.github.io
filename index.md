@@ -21,12 +21,6 @@ excerpt: ""
       I enjoy the experimental tuning phase—designing tests, iterating hardware, and making prototypes behave reliably.
     </p>
 
-    <p class="contacts">
-      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" rel="noopener">LinkedIn</a>
-      &nbsp;·&nbsp;
-      <a href="mailto:YOUR.EMAIL@DOMAIN.COM">Email</a>
-    </p>
-
     <p class="cta home-tabs">
       <a class="home-tab" href="{{ '/projects/' | relative_url }}">Projects</a>
       <a class="home-tab" href="{{ '/cv/' | relative_url }}">CV</a>
