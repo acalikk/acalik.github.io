@@ -102,7 +102,7 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .content {
-  flex: 0 1 550px;         /* Allows text to fill up to 550px, then stops */
+  flex: 0 1 400px;         /* Allows text to fill up to 400px, then stops */
   display: flex;
   flex-direction: column;
 }
