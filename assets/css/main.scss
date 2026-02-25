@@ -103,6 +103,9 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .photo {
+  position: sticky;
+  top: 100px; /* Distance from the header when scrolling */
+  align-self: flex-start;
   flex: 0 0 auto;          /* Prevents the photo container from growing */
 }
 
