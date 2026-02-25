@@ -115,7 +115,7 @@ a:hover{ color: var(--link-hover); }
   display: block;              /* Allows text to wrap around floated elements */
   max-width: 850px;            /* Adjust to control when the wrap occurs */
   margin: 0 auto !important;
-  overflow: auto;              /* Essential to contain the floated photo */
+  overflow: hidden;              /* Essential to contain the floated photo */
 }
 
 .home-hero .photo {
@@ -123,13 +123,13 @@ a:hover{ color: var(--link-hover); }
   width: 240px;                /* Keeps your specific photo width */
   margin-right: 35px;          /* Space between photo and text */
   margin-bottom: 10px;         /* Vertical gap before text flows underneath */
-  flex: none;                  /* Remove old flex property */
+  display: block;                  
 }
 
 .home-hero .photo img {
-  width: 240px;
-  object-fit: cover;     /* Ensures image fills the frame without distortion */
-  height: auto;
+  width: 100%;
+  /*object-fit: cover;     /* Ensures image fills the frame without distortion */
+  height: auto !important;;
   display: block;
   border-radius: 12px;
   border: 1px solid var(--card-border);
@@ -141,6 +141,7 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .kicker{
+  display: block;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -154,6 +155,7 @@ a:hover{ color: var(--link-hover); }
 }*/
 
 .home-hero .summary {
+  display: block;
   font-size: 0.8rem;
   line-height: 1.08;
   color: var(--text);
@@ -198,8 +200,8 @@ a:hover{ color: var(--link-hover); }
 .home-hero .kicker,
 .home-tabs {
   clear: both;
-  text-align: left;
-  display: flex;
+  display: flex !important;
+  padding-top: 20px;
   justify-content: flex-start;
 }
 
