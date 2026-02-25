@@ -6,39 +6,38 @@ header: {}
 excerpt: ""
 ---
 
-<div style="display:flex; gap:28px; align-items:center; flex-wrap:wrap; margin-top:18px; margin-bottom:22px;">
+<div class="home-hero">
 
-  <div style="flex:0 0 auto;">
+  <div class="photo">
     <img src="{{ '/assets/images/profile.jpg' | relative_url }}"
-         alt="Aybüke Çalık Yüksel"
-         style="width:170px; height:170px; object-fit:cover; border-radius:999px; border:1px solid rgba(255,255,255,.18);">
+         alt="Aybüke Çalık Yüksel">
   </div>
 
-  <div style="flex:1 1 360px; min-width:280px;">
+  <div class="content">
+    <p class="kicker">Bioelectronics • Neuroengineering • Biosensors</p>
 
-    <p style="margin:0 0 14px 0; font-size:1.05rem; line-height:1.6; opacity:.9;">
-      I am recent MSc graduate specializing design and validate bioelectronic systems, with a focus on sensing interfaces and experimental characterization.
-      My approach combines hands-on hardware development with structured testing and quantitative analysis.
+    <h1>Aybüke Çalık Yüksel</h1>
+
+    <p class="summary">
+      Bridging electrical engineering and life sciences, I build neuroengineering and biosensing systems that turn subtle biology into measurable signals.
+      I enjoy the experimental tuning phase—designing tests, iterating hardware, and making prototypes behave reliably.
     </p>
 
-    <p style="margin:0; font-size:0.98rem; opacity:.85;">
-      <a href="https://www.linkedin.com/in/aybuke-calik" target="_blank" rel="noopener">LinkedIn</a>
+    <p class="contacts">
+      <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" rel="noopener">LinkedIn</a>
       &nbsp;·&nbsp;
-      <a href="mailto:aybuke_calik@hotmail.com">Email</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/YOUR-GITHUB" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:YOUR.EMAIL@DOMAIN.COM">Email</a>
     </p>
 
-    <p style="margin:14px 0 0 0;">
-      <a class="btn btn--primary" href="{{ '/projects/' | relative_url }}">View projects</a>
+    <p class="cta">
+      <a class="btn btn--primary" href="{{ '/projects/' | relative_url }}">Projects</a>
       <a class="btn btn--inverse" href="{{ '/cv/' | relative_url }}">CV</a>
+      <a class="btn btn--inverse" href="{{ '/hobbies/' | relative_url }}">Hobbies</a>
     </p>
   </div>
 
 </div>
 
-<hr style="opacity:.25; margin: 10px 0 26px 0;">
+<hr class="section-divider">
 
-{% include feature_row
-  id="feature_row"
-%}
+{% include feature_row id="feature_row" %}
