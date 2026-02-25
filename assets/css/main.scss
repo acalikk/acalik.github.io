@@ -191,17 +191,3 @@ a:hover{ color: var(--link-hover); }
   background: #542929 !important;
   color: #EAE0D5 !important;
 }
-
-/* Remove the thin separator borders/lines */
-.page__footer {
-  border-top: 0 !important;
-}
-.page__footer footer {
-  border-top: 0 !important;
-}
-.page__footer a {
-  color: #EAE0D5 !important;
-}
-.page__footer a:hover {
-  color: #FFFFFF !important;
-}
