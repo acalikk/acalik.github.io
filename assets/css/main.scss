@@ -126,3 +126,29 @@ a:hover{ color: var(--link-hover); }
   background: var(--chip-sel) !important;
   color: var(--chip-sel-text) !important;
 }
+/* ===== Home CTA buttons (consistent backgrounds) ===== */
+.home-btn{
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none !important;
+  font-weight: 650;
+  margin-right: 10px;
+
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+
+.home-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(34,51,59,0.28);
+}
+
+/* Active/selected button */
+.home-btn.is-active{
+  background: var(--header-bg);
+  color: var(--page-bg);
+  border-color: rgba(0,0,0,0);
+}
