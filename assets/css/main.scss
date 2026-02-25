@@ -15,7 +15,7 @@
   --link-hover:#1F4A8A;
 
   --chip-bg:   #D6C9B8;
-  --chip-text: #322D29;
+  --chip-text: #542929;
   --chip-sel:  #542929;
   --chip-sel-text:#EAE0D5;
 
@@ -179,8 +179,7 @@ a:hover{ color: var(--link-hover); }
   margin-right: 12px;
 
   border-radius: 8px;
-  /* Updated border color to match your new text color */
-  border: 1px solid #322D29 !important;
+  border: 2px solid #542929 !important;
 
   /* Updated font size to match summary */
   font-size: 0.8rem !important; 
