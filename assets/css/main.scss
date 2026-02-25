@@ -1,253 +1,467 @@
 ---
 ---
-
 @import "minimal-mistakes";
 
+
+
 /* ===== Palette ===== */
+
 :root{
+
   --header-bg: #542929;
+
   --page-bg:   #EAE0D5;
 
+
+
   --text:      #5C5C5C;
+
   --muted:     #5C5C5C;
+
   --h1-text:   #322D29;
 
+
+
   --link:      #2E5EAA;
+
   --link-hover:#1F4A8A;
 
+
+
   --chip-bg:   #D6C9B8; 
+
   --chip-text: #542929; 
+
   --chip-sel:  #542929; 
+
   --chip-sel-text:#EAE0D5;
+
+
 
   --card-border: rgba(34, 51, 59, 0.18);
 
+
+
   --tab: #542929;
+
   --tab-hover: #542929;
+
 }
+
+
 
 /* ===== Page background everywhere ===== */
+
 html, body,
+
 .page, .archive,
+
 .layout--single, .layout--splash{
+
   background: var(--page-bg) !important;
+
   color: var(--text);
+
 }
 
+
+
 /* ===== Vertical Centering: HOMEPAGE ONLY ===== */
+
 /* By prefixing with .layout--splash, this won't affect CV or Projects pages */
+
 .layout--splash .initial-content, 
+
 .layout--splash .page__inner-wrap {
+
   display: flex !important;
+
   flex-direction: column !important;
+
   justify-content: center !important; 
+
   min-height: calc(100vh - 160px) !important; 
+
   margin: 0 auto !important;
+
   padding: 0 !important; /* Removes default theme padding that offsets the center */
+
 }
+
+
+
 
 
 /* ===== Header (remove white rectangle by forcing all nav wrappers) ===== */
+
 .masthead,
+
 .masthead * ,
+
 .greedy-nav,
+
 .greedy-nav * {
+
   background-color: #542929!important;
+
   background: #542929 !important;
+
   box-shadow: none !important;
+
 }
+
 /* Remove any theme borders/shadows that can appear as white strips */
+
 .masthead {
+
   border-bottom: 0 !important;
+
 }
+
 .masthead__menu,
+
 .greedy-nav,
+
 .greedy-nav .visible-links,
+
 .greedy-nav .hidden-links,
+
 .greedy-nav__toggle,
+
 .greedy-nav__toggle-label {
+
   background: #542929 !important;
+
 }
+
 .masthead__inner-wrap {
+
   padding-left: 60px !important;
+
   padding-right: 60px !important;
+
 }
+
+
 
 /* Header text colors */
+
 .site-title {
+
   color: #EAE0D5 !important;
+
 }
 
+
+
 .greedy-nav a {
+
   color: #EAE0D5 !important;
+
   font-weight: 650;
+
 }
+
+
+
 
 
 /* ===== Links (global) ===== */
+
 a{ color: var(--link); }
+
 a:hover{ color: var(--link-hover); }
 
+
+
 /* ===== Homepage hero ===== */
+
 /* Target the title specifically */
+
 .home-title {
+
   text-align: center;
+
   font-size: 1.5rem; /* Increased size */
+
   margin-top: 80px !important;
+
   margin-bottom: 40px; /* Space between title and the hero section */
+
   color: var(--h1-text);
+
   letter-spacing: -0.5px;
+
   font-weight: 800;
+
   text-transform: uppercase;
+
 }
+
+
 
 /* Ensure the wrapper keeps everything centered vertically */
+
 .layout--splash .home-container {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   width: 100%;
+
 }
 
-/* 1. Updated Hero Container: Removed flex, added block flow */
 .home-hero {
-  display: block;              /* Allows text to wrap around floated elements */
-  max-width: 850px;            /* Adjust to control when the wrap occurs */
-  margin: 0 auto !important;
-  overflow: auto;              /* Essential to contain the floated photo */
+
+  display: flex;
+
+  flex-direction: row;
+
+  flex-wrap: nowrap;      /* Force them to stay side-by-side */
+
+  justify-content: center; /* Centers the combined entity on the page */
+
+  align-items: flex-start !important; 
+
+  
+
+  /* The "Gap" creates the equal margin between photo and text */
+
+  gap: 60px;               
+
+  
+
+  margin: 0 auto !important; /* Removed fixed top/bottom margin */
+
+  width: 100%;
+
 }
+
+
 
 .home-hero .photo {
-  float: left;                 /* This is the key for the wrap-around effect */
-  margin-right: 40px;          /* Horizontal gap between photo and text */
-  margin-bottom: 10px;         /* Vertical gap before text flows underneath */
-  flex: none;                  /* Remove old flex property */
+
+  flex: 0 0 auto;          /* Prevents the photo container from growing */
+
 }
+
+
 
 .home-hero .photo img {
+
   width: 240px;
+
   object-fit: cover;     /* Ensures image fills the frame without distortion */
+
   height: auto;
+
   display: block;
+
   border-radius: 12px;
+
   border: 1px solid var(--card-border);
+
 }
+
+
 
 .home-hero .content {
-  display: block;              /* Standard block flow for text wrapping */
-  flex: none;                  /* Remove old flex property */
+
+  flex: 0 1 400px;         /* Allows text to fill up to 400px, then stops */
+
+  display: flex;
+
+  flex-direction: column;
+
 }
+
+
 
 .home-hero .kicker{
+
   font-size: 0.8rem;
+
   letter-spacing: 0.5px;
+
   text-transform: uppercase;
+
   color: var(--muted);
+
   margin: 0 0 10px 0;
+
 }
+
+
 
 /*.home-hero h1{
+
   margin: 0 0 10px 0;
+
   font-size: 2.2rem;
+
 }*/
 
+
+
 .home-hero .summary {
+
   font-size: 0.8rem;
+
   line-height: 1.08;
+
   color: var(--text);
+
   
+
   /* Aligns text to both the left and right sides */
+
   text-align: justify;     
+
   
+
   /* Optional: Ensures the last line doesn't stretch awkwardly */
+
   text-align-last: left;   
+
   
+
   margin: 0 0 20px 0;
+
 }
+
+
 
 .home-hero .contacts{
+
   margin: 0;
+
   font-size: 0.98rem;
+
   color: var(--muted);
+
 }
+
+
 
 .section-divider{
+
   opacity: .35;
+
   margin: 16px 0 26px 0;
+
   border-color: var(--card-border);
+
 }
+
+
 
 /* ===== Projects chips ===== */
+
 .chip,
+
 .tag-chip{
+
   background: var(--chip-bg) !important;
+
   color: var(--chip-text) !important;
+
   border: 1px solid var(--card-border) !important;
+
 }
+
+
 
 .chip[aria-pressed="true"],
+
 .tag-chip[aria-pressed="true"]{
+
   background: var(--chip-sel) !important;
+
   color: var(--chip-sel-text) !important;
+
   border-color: rgba(0,0,0,0) !important;
+
 }
+
+
 
 /* ===== Home boxed tabs (FORCE boxes) ===== */
+
 .home-hero .kicker,
+
 .home-tabs {
-  clear: both;
+
   text-align: left;
+
   display: flex;
+
   justify-content: flex-start;
+
 }
+
+
 
 .home-tabs .home-tab{
+
   display: inline-flex !important;
+
   align-items: center !important;
+
   justify-content: center !important;
 
+
+
   min-width: 100px;           /* Slightly narrower to match smaller text */
+
   padding: 8px 14px;         /* Reduced padding for a sleeker look */
+
   margin-right: 12px;
 
+
+
   border-radius: 8px;
+
   border: 2px solid #542929 !important;
 
+
+
   /* Updated font size to match summary */
+
   font-size: 0.8rem !important; 
+
   /* --- DEFAULT STATE: Filled --- */
+
   background: var(--header-bg)  !important;      /* Filled with your Espresso color */
+
   color: var(--page-bg) !important;    /* Text is the cream background color */
 
+
+
   font-weight: 700;
+
   text-decoration: none !important;
 
+
+
   /*transition: background .15s ease, color .15s ease, border-color .15s ease;*/ /*the one for the filling effect*/
+
   transition: all .15s ease;
+
 }
+
+
 
 .home-tabs .home-tab:hover{
+
   /* --- HOVER STATE: Hollow --- */
+
   background: transparent !important;
+
   border-color: var(--header-bg) !important;
+
   color: var(--header-bg) !important;
-}
-
-/*.home-tabs .home-tab:focus{
-  outline: 2px solid rgba(84, 41, 41, 0.35);
-  outline-offset: 3px;
-}*/ /*uncomment if you go back to filling effect*/
-
-.home-tabs .home-tab:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-/* ===== Footer: match header and remove separator lines ===== */
-.page__footer,
-.page__footer footer,
-.page__footer .page__footer-copyright {
-  background: #542929 !important;
-  color: #EAE0D5 !important;
-}
