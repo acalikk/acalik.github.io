@@ -110,7 +110,7 @@ a:hover{ color: var(--link-hover); }
   width: 100%;
 }
 .home-hero {
-  display: flex;
+  display: block !important;
   flex-direction: row;
   flex-wrap: nowrap;      /* Force them to stay side-by-side */
   justify-content: center; /* Centers the combined entity on the page */
@@ -136,7 +136,7 @@ a:hover{ color: var(--link-hover); }
   width: 240px;
   object-fit: cover;     /* Ensures image fills the frame without distortion */
   height: auto;
-  display: block;
+  display: block !important;
   border-radius: 12px;
   border: 1px solid var(--card-border);
 }
@@ -204,9 +204,9 @@ a:hover{ color: var(--link-hover); }
 /* ===== Home boxed tabs (FORCE boxes) ===== */
 .home-hero .kicker,
 .home-tabs {
-  text-align: left;
-  display: flex;
-  justify-content: flex-start;
+  clear: both;                  /* Forces the buttons to stay at the bottom */
+  display: flex !important;
+  padding-top: 30px;
 }
 
 .home-tabs .home-tab{
