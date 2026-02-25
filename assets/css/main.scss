@@ -67,11 +67,6 @@ html, body,
   font-weight: 650;
 }
 
-.greedy-nav a:hover {
-  color: #295454 !important;
-  text-decoration: underline;
-  text-decoration-color: #295454;
-}
 
 /* ===== Links (global) ===== */
 a{ color: var(--link); }
@@ -193,16 +188,4 @@ a:hover{ color: var(--link-hover); }
   color: #EAE0D5 !important;
 }
 
-/* ===== Force nav hover underline + color ===== */
-.masthead .greedy-nav .visible-links a:hover,
-.masthead .greedy-nav .hidden-links a:hover,
-.masthead__menu-item a:hover {
-  color: #295454 !important;
-  text-decoration: underline !important;
-  text-decoration-color: #295454 !important;
-}
-.masthead .greedy-nav .visible-links a,
-.masthead .greedy-nav .hidden-links a,
-.masthead__menu-item a {
-  text-decoration-color: currentColor; /* underline always matches text */
-}
+
