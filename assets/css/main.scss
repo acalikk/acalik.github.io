@@ -109,22 +109,20 @@ a:hover{ color: var(--link-hover); }
   justify-content: center;
   width: 100%;
 }
+
+/* 1. Updated Hero Container: Removed flex, added block flow */
 .home-hero {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;      /* Force them to stay side-by-side */
-  justify-content: center; /* Centers the combined entity on the page */
-  align-items: flex-start !important; 
-  
-  /* The "Gap" creates the equal margin between photo and text */
-  gap: 60px;               
-  
-  margin: 0 auto !important; /* Removed fixed top/bottom margin */
-  width: 100%;
+  display: block;              /* Allows text to wrap around floated elements */
+  max-width: 850px;            /* Adjust to control when the wrap occurs */
+  margin: 0 auto !important;
+  overflow: auto;              /* Essential to contain the floated photo */
 }
 
 .home-hero .photo {
-  flex: 0 0 auto;          /* Prevents the photo container from growing */
+  float: left;                 /* This is the key for the wrap-around effect */
+  margin-right: 40px;          /* Horizontal gap between photo and text */
+  margin-bottom: 10px;         /* Vertical gap before text flows underneath */
+  flex: none;                  /* Remove old flex property */
 }
 
 .home-hero .photo img {
@@ -137,9 +135,8 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .content {
-  flex: 0 1 400px;         /* Allows text to fill up to 400px, then stops */
-  display: flex;
-  flex-direction: column;
+  display: block;              /* Standard block flow for text wrapping */
+  flex: none;                  /* Remove old flex property */
 }
 
 .home-hero .kicker{
@@ -199,6 +196,7 @@ a:hover{ color: var(--link-hover); }
 /* ===== Home boxed tabs (FORCE boxes) ===== */
 .home-hero .kicker,
 .home-tabs {
+  clear: both;
   text-align: left;
   display: flex;
   justify-content: flex-start;
