@@ -16,8 +16,6 @@ excerpt: ""
   <div class="content">
     <p class="kicker">Bioelectronics • Neuroengineering • Biosensors</p>
 
-    <h1>Aybüke Çalık Yüksel</h1>
-
     <p class="summary">
       Bridging electrical engineering and life sciences, I build neuroengineering and biosensing systems that turn subtle biology into measurable signals.
       I enjoy the experimental tuning phase—designing tests, iterating hardware, and making prototypes behave reliably.
