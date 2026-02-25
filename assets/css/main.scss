@@ -8,14 +8,14 @@
   --header-bg: #542929;
   --page-bg:   #EAE0D5;
 
-  --text:      #1B1B1B;
+  --text:      #0B1215;
   --muted:     #5C5C5C;
 
   --link:      #2E5EAA;
   --link-hover:#1F4A8A;
 
   --chip-bg:   #D6C9B8;
-  --chip-text: #1B1B1B;
+  --chip-text: #0B1215;
   --chip-sel:  #542929;
   --chip-sel-text:#EAE0D5;
 
@@ -121,8 +121,8 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .summary {
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 0.8rem;
+  line-height: 1.08;
   color: var(--text);
   
   /* Aligns text to both the left and right sides */
