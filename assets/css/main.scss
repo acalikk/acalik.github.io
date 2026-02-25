@@ -194,5 +194,15 @@ a:hover{ color: var(--link-hover); }
   background: #542929 !important;
   color: #EAE0D5 !important;
 }
-
-
+/* ===== Center the homepage*/
+.layout--splash .initial-content,
+.layout--splash .page__inner-wrap,
+.layout--splash .archive {
+  max-width: 1100px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.layout--splash .page__inner-wrap {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
