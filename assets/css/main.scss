@@ -77,28 +77,30 @@ a:hover{ color: var(--link-hover); }
 /* ===== Homepage hero ===== */
 .home-hero {
   display: flex;
-  flex-direction: row;      /* Keep them side-by-side */
-  flex-wrap: nowrap;        /* Prevent wrapping for now to keep them inline */
-  justify-content: center;  /* This centers the group as a whole */
-  align-items: center;      /* Vertically aligns image and text centers */
-  gap: 48px;                /* Increased gap to let the center feel intentional */
-  margin: 40px auto;        /* Adds vertical breathing room */
+  flex-direction: row;      /* Force horizontal */
+  flex-wrap: nowrap;        /* Prevent them from jumping to new lines */
+  justify-content: center;  /* Centers the whole pair on the page */
+  align-items: center;      /* Vertically centers image with text */
+  gap: 40px;                /* Space between photo and text */
+  
   width: 100%;
+  max-width: 1200px;        /* Limits total width on huge monitors */
+  margin: 40px auto;        /* Centers the container itself */
+}
+.home-hero .photo {
+  flex: 0 0 auto;           /* Do not grow, do not shrink */
 }
 
-.home-hero .photo img{
-  width: 320px;
-  max-width: 92vw;
+.home-hero .photo img {
+  width: 320px;             /* Fixed width to keep layout stable */
   height: auto;
-  border-radius: 12px;
-  border: 1px solid var(--card-border);
-  background: #fff;
+  display: block;
 }
 
 .home-hero .content {
-  flex: 0 1 auto;           /* Don't force it to grow; let it sit naturally */
-  max-width: 550px;         /* Prevents the text lines from getting too long */
-  text-align: left;         /* Keeps text readable while the whole block is centered */
+  flex: 0 1 500px;          /* Grow to 500px max, then stop */
+  min-width: 300px;         /* Minimum space it can occupy before scrolling */
+  text-align: left;         /* Align text to the left within this block */
 }
 
 .home-hero .kicker{
