@@ -112,44 +112,39 @@ a:hover{ color: var(--link-hover); }
 
 /* 1. Updated Hero Container: Removed flex, added block flow */
 .home-hero {
-  display: block; !important;             /* Allows text to wrap around floated elements */
-  max-width: 850px; !important;           /* Adjust to control when the wrap occurs */
+  display: block;              /* Allows text to wrap around floated elements */
+  max-width: 850px;            /* Adjust to control when the wrap occurs */
   margin: 0 auto !important;
-  overflow: hidden;  !important;            /* Essential to contain the floated photo */
+  overflow: auto;              /* Essential to contain the floated photo */
 }
 
 .home-hero .photo {
-  float: left; !important;                 /* This is the key for the wrap-around effect */
-  width: 240px;  !important;              /* Keeps your specific photo width */
-  margin-right: 35px; !important;         /* Space between photo and text */
-  margin-bottom: 10px; !important;        /* Vertical gap before text flows underneath */
-  display: block;        
-  flex: none !important;
-  position: relative !important;
+  float: left;                 /* This is the key for the wrap-around effect */
+  margin-right: 40px;          /* Horizontal gap between photo and text */
+  margin-bottom: 10px;         /* Vertical gap before text flows underneath */
+  flex: none;                  /* Remove old flex property */
 }
 
 .home-hero .photo img {
-  width: 100%; !important;
-  /*object-fit: cover;     /* Ensures image fills the frame without distortion */
-  height: auto; !important;
-  display: block; !important;
-  border-radius: 12px; !important;
-  border: 1px solid var(--card-border); !important;
+  width: 240px;
+  object-fit: cover;     /* Ensures image fills the frame without distortion */
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
 }
 
-/*.home-hero .content {
-  display: block;              
-  flex: none;               
-} */
+.home-hero .content {
+  display: block;              /* Standard block flow for text wrapping */
+  flex: none;                  /* Remove old flex property */
+}
 
 .home-hero .kicker{
-  display: block; !important;
   font-size: 0.8rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 10px 0;
-  clear:none !important;
 }
 
 /*.home-hero h1{
@@ -158,7 +153,6 @@ a:hover{ color: var(--link-hover); }
 }*/
 
 .home-hero .summary {
-  display: block; !important;
   font-size: 0.8rem;
   line-height: 1.08;
   color: var(--text);
@@ -202,10 +196,10 @@ a:hover{ color: var(--link-hover); }
 /* ===== Home boxed tabs (FORCE boxes) ===== */
 .home-hero .kicker,
 .home-tabs {
-  clear: both; !important;
-  display: flex !important;
-  padding-top: 20px;
-  justify-content: flex-start; !important;
+  clear: both;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .home-tabs .home-tab{
@@ -257,4 +251,3 @@ a:hover{ color: var(--link-hover); }
   background: #542929 !important;
   color: #EAE0D5 !important;
 }
-
