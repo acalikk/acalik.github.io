@@ -225,7 +225,8 @@ a:hover{ color: var(--link-hover); }
   font-weight: 700;
   text-decoration: none !important;
 
-  transition: background .15s ease, color .15s ease, border-color .15s ease;
+  /*transition: background .15s ease, color .15s ease, border-color .15s ease;*/ /*the one for the filling effect*/
+  transition: all .15s ease;
 }
 
 .home-tabs .home-tab:hover{
