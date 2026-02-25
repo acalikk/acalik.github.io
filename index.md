@@ -29,5 +29,3 @@ excerpt: ""
   </div>
 
 </div>
-
-{% include feature_row id="feature_row" %}
