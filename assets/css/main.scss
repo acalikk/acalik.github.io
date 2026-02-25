@@ -93,7 +93,7 @@ a:hover{ color: var(--link-hover); }
   flex-direction: row;
   flex-wrap: nowrap;      /* Force them to stay side-by-side */
   justify-content: center; /* Centers the combined entity on the page */
-  align-items: center;    /* Keeps photo and text centers vertically aligned with each other */
+  align-items: flex-start !important; 
   
   /* The "Gap" creates the equal margin between photo and text */
   gap: 60px;               
@@ -108,7 +108,6 @@ a:hover{ color: var(--link-hover); }
 
 .home-hero .photo img {
   width: 240px;
-  aspect-ratio: 4 / 5;   /* Taller portrait ratio */
   object-fit: cover;     /* Ensures image fills the frame without distortion */
   height: auto;
   display: block;
