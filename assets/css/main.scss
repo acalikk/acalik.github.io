@@ -183,3 +183,25 @@ a:hover{ color: var(--link-hover); }
   outline: 2px solid rgba(84, 41, 41, 0.35);
   outline-offset: 3px;
 }
+
+/* ===== Footer: match header and remove separator lines ===== */
+.page__footer,
+.page__footer footer,
+.page__footer .page__footer-copyright {
+  background: #542929 !important;
+  color: #EAE0D5 !important;
+}
+
+/* Remove the thin separator borders/lines */
+.page__footer {
+  border-top: 0 !important;
+}
+.page__footer footer {
+  border-top: 0 !important;
+}
+.page__footer a {
+  color: #EAE0D5 !important;
+}
+.page__footer a:hover {
+  color: #FFFFFF !important;
+}
