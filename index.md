@@ -9,7 +9,7 @@ excerpt: ""
 <div class="home-hero">
 
   <div class="photo">
-    <img src="{{ '/assets/images/profile.jpg' | relative_url }}"
+    <img src="{{ '/assets/images/profile.jpeg' | relative_url }}"
          alt="Aybüke Çalık Yüksel">
   </div>
 
