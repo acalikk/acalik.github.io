@@ -38,12 +38,7 @@ html, body,
 /* By prefixing with .layout--splash, this won't affect CV or Projects pages */
 .layout--splash .initial-content, 
 .layout--splash .page__inner-wrap {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important; 
-  min-height: calc(100vh - 160px) !important; 
-  margin: 0 auto !important;
-  padding: 0 !important; /* Removes default theme padding that offsets the center */
+  display: block !important;
 }
 
 
