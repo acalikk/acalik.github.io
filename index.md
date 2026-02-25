@@ -30,6 +30,4 @@ excerpt: ""
 
 </div>
 
-<hr class="section-divider">
-
 {% include feature_row id="feature_row" %}
