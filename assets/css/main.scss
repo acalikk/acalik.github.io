@@ -188,16 +188,4 @@ a:hover{ color: var(--link-hover); }
   color: #EAE0D5 !important;
 }
 
-/* ===== Change nav underline (border-bottom) color ===== */
-.masthead .greedy-nav .visible-links a,
-.masthead .greedy-nav .hidden-links a {
-  border-bottom: 2px solid transparent;
-}
-
-.masthead .greedy-nav .visible-links a:hover,
-.masthead .greedy-nav .hidden-links a:hover {
-  border-bottom: 2px solid #295454 !important;
-  color: #295454 !important;
-}
-
 
