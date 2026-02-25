@@ -10,6 +10,7 @@
 
   --text:      #5C5C5C;
   --muted:     #5C5C5C;
+  --h1-text:   #322D29;
 
   --link:      #2E5EAA;
   --link-hover:#1F4A8A;
@@ -91,9 +92,10 @@ a:hover{ color: var(--link-hover); }
 /* Target the title specifically */
 .home-title {
   text-align: center;
-  font-size: 1.2rem; /* Increased size */
+  font-size: 1.5rem; /* Increased size */
+  margin-top: 80px !important;
   margin-bottom: 40px; /* Space between title and the hero section */
-  color: var(--text);
+  color: var(--h1-text);
   letter-spacing: -0.5px;
   font-weight: 800;
 }
