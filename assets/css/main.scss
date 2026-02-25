@@ -46,8 +46,6 @@ html, body,
 .masthead {
   border-bottom: 0 !important;
 }
-
-.masthead__inner-wrap,
 .masthead__menu,
 .greedy-nav,
 .greedy-nav .visible-links,
@@ -55,6 +53,10 @@ html, body,
 .greedy-nav__toggle,
 .greedy-nav__toggle-label {
   background: #542929 !important;
+}
+.masthead__inner-wrap {
+  padding-left: 60px !important;
+  padding-right: 60px !important;
 }
 
 /* Header text colors */
@@ -78,8 +80,13 @@ a:hover{ color: var(--link-hover); }
   gap:34px;
   align-items:flex-start;
   flex-wrap:wrap;
+
   margin-top: 18px;
   margin-bottom: 22px;
+
+  max-width: 1100px;   /* center width control */
+  margin-left: auto;   /* center horizontally */
+  margin-right: auto;
 }
 
 .home-hero .photo img{
