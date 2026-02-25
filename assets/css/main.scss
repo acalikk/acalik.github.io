@@ -120,7 +120,8 @@ a:hover{ color: var(--link-hover); }
 
 .home-hero .photo {
   float: left;                 /* This is the key for the wrap-around effect */
-  margin-right: 40px;          /* Horizontal gap between photo and text */
+  width: 240px;                /* Keeps your specific photo width */
+  margin-right: 35px;          /* Space between photo and text */
   margin-bottom: 10px;         /* Vertical gap before text flows underneath */
   flex: none;                  /* Remove old flex property */
 }
