@@ -14,7 +14,7 @@ excerpt: ""
   </div>
 
   <div class="content">
-    <p class="kicker">Bioelectronics • Neuroengineering • Biosensors</p>
+    <p class="kicker">Biomedical & Electronics Engineer</p>
 
     <p class="summary">
       Bridging electrical engineering and life sciences, I build neuroengineering and biosensing systems that turn subtle biology into measurable signals.
