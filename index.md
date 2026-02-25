@@ -29,11 +29,11 @@ excerpt: ""
       <a href="mailto:YOUR.EMAIL@DOMAIN.COM">Email</a>
     </p>
 
-    <p class="cta">
-      <a class="btn btn--primary" href="{{ '/projects/' | relative_url }}">Projects</a>
-      <a class="btn btn--inverse" href="{{ '/cv/' | relative_url }}">CV</a>
-      <a class="btn btn--inverse" href="{{ '/hobbies/' | relative_url }}">Hobbies</a>
-    </p>
+  <p class="cta">
+    <a class="home-btn is-active" href="{{ '/projects/' | relative_url }}">Projects</a>
+    <a class="home-btn" href="{{ '/cv/' | relative_url }}">CV</a>
+    <a class="home-btn" href="{{ '/hobbies/' | relative_url }}">Hobbies</a>
+  </p>
   </div>
 
 </div>
