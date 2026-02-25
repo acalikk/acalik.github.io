@@ -1,49 +1,61 @@
 ---
-# Only the triple-dash front matter is required for Jekyll to process SCSS.
 ---
 
 @import "minimal-mistakes";
 
-/* ===== Your custom styles below ===== */
-
+/* ===== Palette ===== */
 :root{
-  --header-bg: #0F172A;
-  --page-bg:   #F5F7FA;
-  --text:      #1E293B;
-  --muted:     #475569;
-  --link:      #2563EB;
-  --link-hover:#1E40AF;
+  --header-bg: #542929;
+  --page-bg:   #EAE0D5;
 
-  --chip-bg:   #E2E8F0;
-  --chip-text: #1E293B;
-  --chip-sel:  #2563EB;
-  --chip-sel-text:#FFFFFF;
+  --text:      #1B1B1B;
+  --muted:     #5C5C5C;
 
-  --card-border: rgba(15, 23, 42, 0.12);
+  --link:      #2E5EAA;
+  --link-hover:#1F4A8A;
+
+  --chip-bg:   #D6C9B8;
+  --chip-text: #1B1B1B;
+  --chip-sel:  #22333B;
+  --chip-sel-text:#EAE0D5;
+
+  --card-border: rgba(34, 51, 59, 0.18);
+
+  --tab: #542929;
+  --tab-hover: #3f1f1f;
 }
 
-/* page background */
-body{
-  background: var(--page-bg);
+/* ===== Page background everywhere ===== */
+html, body,
+.page, .page__inner-wrap, .initial-content, .archive,
+.layout--single, .layout--splash{
+  background: var(--page-bg) !important;
   color: var(--text);
 }
 
-/* header */
+/* ===== Header (remove white rectangle by forcing all nav wrappers) ===== */
 .masthead,
-.masthead__inner-wrap{
+.masthead__inner-wrap,
+.masthead__menu,
+.greedy-nav,
+.greedy-nav .visible-links,
+.greedy-nav .hidden-links{
   background: var(--header-bg) !important;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.masthead{
+  border-bottom: 1px solid rgba(234, 224, 213, 0.18);
 }
 
 .site-title{
-  color: #F8FAFC !important;
+  color: #EAE0D5 !important;
   font-weight: 650;
   letter-spacing: 0.3px;
 }
 
 .greedy-nav a{
-  color: #93C5FD !important; /* soft blue for tabs */
-  font-weight: 550;
+  color: #EAE0D5 !important;
+  font-weight: 600;
   padding: 8px 12px;
   border-radius: 10px;
   transition: background .15s ease, color .15s ease;
@@ -51,14 +63,14 @@ body{
 
 .greedy-nav a:hover{
   color: #FFFFFF !important;
-  background: rgba(255,255,255,0.08);
+  background: rgba(234, 224, 213, 0.12);
 }
 
-/* links */
+/* ===== Links (global) ===== */
 a{ color: var(--link); }
 a:hover{ color: var(--link-hover); }
 
-/* homepage hero */
+/* ===== Homepage hero ===== */
 .home-hero{
   display:flex;
   gap:34px;
@@ -72,7 +84,7 @@ a:hover{ color: var(--link-hover); }
   width: 320px;
   max-width: 92vw;
   height: auto;
-  border-radius: 10px; /* rectangular */
+  border-radius: 12px;
   border: 1px solid var(--card-border);
   background: #fff;
 }
@@ -109,61 +121,59 @@ a:hover{ color: var(--link-hover); }
 }
 
 .section-divider{
-  opacity: .25;
-  margin: 10px 0 26px 0;
+  opacity: .35;
+  margin: 16px 0 26px 0;
+  border-color: var(--card-border);
 }
 
-/* chips (Projects page) */
+/* ===== Projects chips ===== */
 .chip,
 .tag-chip{
   background: var(--chip-bg) !important;
   color: var(--chip-text) !important;
-  border: 1px solid rgba(15,23,42,0.12) !important;
+  border: 1px solid var(--card-border) !important;
 }
 
 .chip[aria-pressed="true"],
 .tag-chip[aria-pressed="true"]{
   background: var(--chip-sel) !important;
   color: var(--chip-sel-text) !important;
-}
-/* ===== Home boxed tabs ===== */
-:root{
-  --tab: #542929;
-  --tab-hover: #3f1f1f; /* ~1-2 shades darker */
+  border-color: rgba(0,0,0,0) !important;
 }
 
+/* ===== Home boxed tabs (FORCE boxes) ===== */
 .home-tabs{
   margin-top: 14px;
 }
 
-.home-tab{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.home-tabs .home-tab{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  min-width: 120px;         /* keeps the “boxy tab” look */
+  min-width: 120px;
   padding: 12px 18px;
   margin-right: 12px;
 
-  border-radius: 8px;       /* shape like your screenshot */
-  border: 2px solid var(--tab);
+  border-radius: 8px;
+  border: 2px solid var(--tab) !important;
 
-  background: transparent;  /* no fill by default */
-  color: var(--tab);
+  background: transparent !important;
+  color: var(--tab) !important;
+
   font-weight: 700;
   text-decoration: none !important;
 
   transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
-.home-tab:hover{
-  background: var(--tab-hover);
-  border-color: var(--tab-hover);
-  color: #EAE0D5;           /* readable on dark hover */
+.home-tabs .home-tab:hover{
+  background: var(--tab-hover) !important;
+  border-color: var(--tab-hover) !important;
+  color: var(--page-bg) !important;
 }
 
-/* Optional: remove the ugly focus outline but keep accessibility */
-.home-tab:focus{
+.home-tabs .home-tab:focus{
   outline: 2px solid rgba(84, 41, 41, 0.35);
   outline-offset: 3px;
 }
