@@ -167,7 +167,6 @@ a:hover{ color: var(--link-hover); }
   text-align: left;
   display: flex;
   justify-content: flex-start;
-  font-size: 0.8rem;
 }
 
 .home-tabs .home-tab{
@@ -175,15 +174,17 @@ a:hover{ color: var(--link-hover); }
   align-items: center !important;
   justify-content: center !important;
 
-  min-width: 120px;
-  padding: 12px 18px;
+  min-width: 100px;           /* Slightly narrower to match smaller text */
+  padding: 8px 14px;         /* Reduced padding for a sleeker look */
   margin-right: 12px;
 
   border-radius: 8px;
-  border: 2px solid var(--tab) !important;
+  /* Updated border color to match your new text color */
+  border: 1px solid #322D29 !important;
 
-  background: transparent !important;
-  color: var(--tab) !important;
+  /* Updated font size to match summary */
+  font-size: 0.8rem !important; 
+  color: #322D29 !important;
 
   font-weight: 700;
   text-decoration: none !important;
