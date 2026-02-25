@@ -124,7 +124,12 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .photo {
-  flex: 0 0 auto;          /* Prevents the photo container from growing */
+  float: left;
+  /*flex: 0 0 auto;          /* Prevents the photo container from growing */
+  shape-outside: inset(0 0 0 0 round 12px); /* Defines the wrap-around shape */
+  shape-margin: 30px;                       /* The modern gap parameter */
+  
+  margin-bottom: 10px;
 }
 
 .home-hero .photo img {
