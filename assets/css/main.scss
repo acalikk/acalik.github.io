@@ -236,9 +236,14 @@ a:hover{ color: var(--link-hover); }
   color: var(--header-bg) !important;
 }
 
-.home-tabs .home-tab:focus{
+/*.home-tabs .home-tab:focus{
   outline: 2px solid rgba(84, 41, 41, 0.35);
   outline-offset: 3px;
+}*/ /*uncomment if you go back to filling effect*/
+
+.home-tabs .home-tab:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* ===== Footer: match header and remove separator lines ===== */
