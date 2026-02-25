@@ -88,6 +88,24 @@ a{ color: var(--link); }
 a:hover{ color: var(--link-hover); }
 
 /* ===== Homepage hero ===== */
+/* Target the title specifically */
+.home-title {
+  text-align: center;
+  font-size: 1.2rem; /* Increased size */
+  margin-bottom: 40px; /* Space between title and the hero section */
+  color: var(--text);
+  letter-spacing: -0.5px;
+  font-weight: 800;
+}
+
+/* Ensure the wrapper keeps everything centered vertically */
+.layout--splash .home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 .home-hero {
   display: flex;
   flex-direction: row;
@@ -129,10 +147,10 @@ a:hover{ color: var(--link-hover); }
   margin: 0 0 10px 0;
 }
 
-.home-hero h1{
+/*.home-hero h1{
   margin: 0 0 10px 0;
   font-size: 2.2rem;
-}
+}*/
 
 .home-hero .summary {
   font-size: 0.8rem;
