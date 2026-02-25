@@ -15,10 +15,10 @@
   --link:      #2E5EAA;
   --link-hover:#1F4A8A;
 
-  --chip-bg:   #542929; 
-  --chip-text: #EAE0D5; 
-  --chip-sel:  #D6C9B8; 
-  --chip-sel-text:#542929;
+  --chip-bg:   #D6C9B8; 
+  --chip-text: #542929; 
+  --chip-sel:  #542929; 
+  --chip-sel-text:#EAE0D5;
 
   --card-border: rgba(34, 51, 59, 0.18);
 
@@ -218,7 +218,9 @@ a:hover{ color: var(--link-hover); }
 
   /* Updated font size to match summary */
   font-size: 0.8rem !important; 
-  color: #542929 !important;
+  /* --- DEFAULT STATE: Filled --- */
+  background: var(--header-bg)  !important;      /* Filled with your Espresso color */
+  color: var(--page-bg) !important;    /* Text is the cream background color */
 
   font-weight: 700;
   text-decoration: none !important;
@@ -227,9 +229,10 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-tabs .home-tab:hover{
-  background: var(--tab-hover) !important;
-  border-color: var(--tab-hover) !important;
-  color: var(--page-bg) !important;
+  /* --- HOVER STATE: Hollow --- */
+  background: transparent !important;
+  border-color: var(--header-bg) !important;
+  color: var(--header-bg) !important;
 }
 
 .home-tabs .home-tab:focus{
