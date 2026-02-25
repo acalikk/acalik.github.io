@@ -83,7 +83,7 @@ a:hover{ color: var(--link-hover); }
   align-items: flex-start; /* Keeps photo and text aligned at the top */
   
   /* The "Gap" creates the equal margin between photo and text */
-  gap: 45px;               
+  gap: 60px;               
   
   margin: 40px auto;       /* Centers the hero block within the page wrapper */
   width: 100%;
@@ -94,7 +94,7 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .photo img {
-  width: 260px;
+  width: 180px;
   height: auto;
   display: block;
   border-radius: 12px;
