@@ -77,39 +77,43 @@ a:hover{ color: var(--link-hover); }
 /* ===== Homepage hero ===== */
 .home-hero {
   display: flex;
-  flex-direction: row;      /* Force horizontal */
-  flex-wrap: nowrap;        /* Prevent them from jumping to new lines */
-  justify-content: center;  /* Centers the whole pair on the page */
-  align-items: center;      /* Vertically centers image with text */
-  gap: 40px;                /* Space between photo and text */
+  flex-direction: row;
+  flex-wrap: nowrap;      /* Force them to stay side-by-side */
+  justify-content: center; /* Centers the combined entity on the page */
+  align-items: flex-start; /* Keeps photo and text aligned at the top */
   
+  /* The "Gap" creates the equal margin between photo and text */
+  gap: 34px;               
+  
+  margin: 40px auto;       /* Centers the hero block within the page wrapper */
   width: 100%;
-  max-width: 1200px;        /* Limits total width on huge monitors */
-  margin: 40px auto;        /* Centers the container itself */
 }
+
 .home-hero .photo {
-  flex: 0 0 auto;           /* Do not grow, do not shrink */
+  flex: 0 0 auto;          /* Prevents the photo container from growing */
 }
 
 .home-hero .photo img {
-  width: 320px;             /* Fixed width to keep layout stable */
+  width: 320px;
   height: auto;
   display: block;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
 }
 
 .home-hero .content {
-  flex: 0 1 500px;          /* Grow to 500px max, then stop */
-  min-width: 300px;         /* Minimum space it can occupy before scrolling */
-  text-align: left;         /* Align text to the left within this block */
+  flex: 0 1 550px;         /* Allows text to fill up to 550px, then stops */
+  display: flex;
+  flex-direction: column;
 }
 
-.home-hero .kicker{
+/*.home-hero .kicker{
   font-size: 0.95rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 10px 0;
-}
+}*/
 
 .home-hero h1{
   margin: 0 0 10px 0;
@@ -117,9 +121,17 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .summary {
-  margin: 0 0 20px 0;       /* Standard bottom margin */
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.65;
+  color: var(--text);
+  
+  /* Aligns text to both the left and right sides */
+  text-align: justify;     
+  
+  /* Optional: Ensures the last line doesn't stretch awkwardly */
+  text-align-last: left;   
+  
+  margin: 0 0 20px 0;
 }
 
 .home-hero .contacts{
@@ -150,11 +162,11 @@ a:hover{ color: var(--link-hover); }
 }
 
 /* ===== Home boxed tabs (FORCE boxes) ===== */
+.home-hero .kicker,
 .home-tabs {
+  text-align: left;
   display: flex;
-  justify-content: flex-start; /* Aligned with the start of your text */
-  gap: 12px;
-  margin-top: 14px;
+  justify-content: flex-start;
 }
 
 .home-tabs .home-tab{
