@@ -77,12 +77,13 @@ a:hover{ color: var(--link-hover); }
 /* ===== Homepage hero ===== */
 .home-hero {
   display: flex;
-  flex-direction: column; /* Changed from default (row) to stack elements */
-  align-items: center;    /* Centers image and text block horizontally */
-  text-align: center;     /* Centers all text lines */
-  gap: 24px;              /* Tightened gap for vertical layout */
-  margin-top: 18px;
-  margin-bottom: 22px;
+  flex-direction: row;      /* Keep them side-by-side */
+  flex-wrap: nowrap;        /* Prevent wrapping for now to keep them inline */
+  justify-content: center;  /* This centers the group as a whole */
+  align-items: center;      /* Vertically aligns image and text centers */
+  gap: 48px;                /* Increased gap to let the center feel intentional */
+  margin: 40px auto;        /* Adds vertical breathing room */
+  width: 100%;
 }
 
 .home-hero .photo img{
@@ -95,9 +96,9 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .content {
-  flex: 1 1 auto;
-  width: 100%;
-  max-width: 700px;      /* Prevents text from spanning the entire screen width */
+  flex: 0 1 auto;           /* Don't force it to grow; let it sit naturally */
+  max-width: 550px;         /* Prevents the text lines from getting too long */
+  text-align: left;         /* Keeps text readable while the whole block is centered */
 }
 
 .home-hero .kicker{
@@ -114,11 +115,9 @@ a:hover{ color: var(--link-hover); }
 }
 
 .home-hero .summary {
-  margin: 0 auto 20px auto; /* "auto" left/right margins center the block itself */
-  font-size: 1.1rem;        /* Increased slightly for better hierarchy */
+  margin: 0 0 20px 0;       /* Standard bottom margin */
+  font-size: 1.1rem;
   line-height: 1.65;
-  color: var(--text);
-  max-width: 600px;         /* Optimal line length for centered reading */
 }
 
 .home-hero .contacts{
@@ -150,11 +149,10 @@ a:hover{ color: var(--link-hover); }
 
 /* ===== Home boxed tabs (FORCE boxes) ===== */
 .home-tabs {
-  margin-top: 14px;
-  display: flex;          /* Added to control button alignment */
-  justify-content: center; /* Centers the row of buttons */
-  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start; /* Aligned with the start of your text */
   gap: 12px;
+  margin-top: 14px;
 }
 
 .home-tabs .home-tab{
