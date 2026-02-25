@@ -8,14 +8,14 @@
   --header-bg: #542929;
   --page-bg:   #EAE0D5;
 
-  --text:      #D3D3D3;
+  --text:      #322D29;
   --muted:     #5C5C5C;
 
   --link:      #2E5EAA;
   --link-hover:#1F4A8A;
 
   --chip-bg:   #D6C9B8;
-  --chip-text: #D3D3D3;
+  --chip-text: #322D29;
   --chip-sel:  #542929;
   --chip-sel-text:#EAE0D5;
 
@@ -167,6 +167,7 @@ a:hover{ color: var(--link-hover); }
   text-align: left;
   display: flex;
   justify-content: flex-start;
+  font-size: 0.8rem;
 }
 
 .home-tabs .home-tab{
