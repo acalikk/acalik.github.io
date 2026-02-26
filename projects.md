@@ -8,6 +8,14 @@ classes: wide
 A selection of projects with focus on **what I built**, **how I tested/validated**, and **measurable outcomes**.
 
 <div class="filters">
+  <div class="search-row">
+    <div class="search-input-wrapper">
+      <div class="filter-label">Search</div>
+      <input id="searchBox" type="search" placeholder="Search projects...">
+    </div>
+    <button id="clearBtn" type="button" class="btn btn--small">Clear</button>
+  </div>
+
   <div class="filter-group">
     <div class="filter-label">Areas</div>
     <div id="areaBar" class="chip-container"></div>
@@ -23,18 +31,7 @@ A selection of projects with focus on **what I built**, **how I tested/validated
     </details>
   </div>
 
-  <div class="search-row">
-    <div class="search-input-wrapper">
-      <div class="filter-label">Search</div>
-      <input id="searchBox" type="search" placeholder="Search title, subtitle, summary, tags, tools…">
-    </div>
-    <button id="clearBtn" type="button" class="btn btn--small">Clear</button>
-  </div>
-
   <p id="resultCount" class="result-text"></p>
-  <p class="logic-hint">
-    Multiple areas and multiple tags use <strong>OR</strong> logic (matches any selected item).
-  </p>
 </div>
 
 <div id="projectList" style="display:grid; grid-template-columns: repeat(12, 1fr); gap:14px;">
