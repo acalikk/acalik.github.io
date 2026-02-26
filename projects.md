@@ -7,35 +7,34 @@ classes: wide
 
 A selection of projects with focus on **what I built**, **how I tested/validated**, and **measurable outcomes**.
 
-<div class="filters" style="margin: 1rem 0;">
-  <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:flex-end;">
-    <div>
-      <div style="font-size:12px; opacity:.8; margin-bottom:6px;">Areas</div>
-      <div id="areaBar" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
-    </div>
-
-    <label style="flex:1; min-width:260px;">
-      <span style="display:block; font-size:12px; opacity:.8; margin-bottom:6px;">Search</span>
-      <input id="searchBox" type="search" placeholder="Search title, subtitle, summary, tags, tools…" style="width:100%; padding:10px 12px; border-radius:10px;">
-    </label>
-
-    <button id="clearBtn" type="button" class="btn btn--small" style="height:40px;">
-      Clear
-    </button>
+<div class="filters">
+  <div class="filter-group">
+    <div class="filter-label">Areas</div>
+    <div id="areaBar" class="chip-container"></div>
   </div>
 
-  <details id="tagPanel" style="margin-top:12px;" open>
-    <summary style="cursor:pointer;">Tags</summary>
-    <div id="tagBar" style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;"></div>
-    <div style="margin-top:10px;">
-      <button id="toggleMoreTags" type="button" class="btn btn--small">Show more</button>
-    </div>
-    <p style="font-size: 12px; opacity: .75; margin-top: 8px;">
-      Multiple areas and multiple tags use <strong>OR</strong> logic (matches any selected item).
-    </p>
-  </details>
+  <div class="filter-group">
+    <details id="tagPanel" open>
+      <summary class="filter-label">Tags</summary>
+      <div id="tagBar" class="chip-container"></div>
+      <div class="toggle-wrapper">
+        <button id="toggleMoreTags" type="button" class="btn btn--small">Show more</button>
+      </div>
+    </details>
+  </div>
 
-  <p id="resultCount" style="margin-top:12px; opacity:.8;"></p>
+  <div class="search-row">
+    <div class="search-input-wrapper">
+      <div class="filter-label">Search</div>
+      <input id="searchBox" type="search" placeholder="Search title, subtitle, summary, tags, tools…">
+    </div>
+    <button id="clearBtn" type="button" class="btn btn--small">Clear</button>
+  </div>
+
+  <p id="resultCount" class="result-text"></p>
+  <p class="logic-hint">
+    Multiple areas and multiple tags use <strong>OR</strong> logic (matches any selected item).
+  </p>
 </div>
 
 <div id="projectList" style="display:grid; grid-template-columns: repeat(12, 1fr); gap:14px;">
