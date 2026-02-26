@@ -36,11 +36,14 @@ html, body,
 
 /* ===== Vertical Centering: HOMEPAGE ONLY ===== */
 /* By prefixing with .layout--splash, this won't affect CV or Projects pages */
-.layout--splash .page__inner-wrap,
-.layout--splash .page__content {
-  display: block !important;
-  float: none !important;
-  width: 100% !important;
+.layout--splash .initial-content, 
+.layout--splash .page__inner-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; 
+  min-height: calc(100vh - 160px) !important; 
+  margin: 0 auto !important;
+  padding: 0 !important; /* Removes default theme padding that offsets the center */
 }
 
 
@@ -107,39 +110,30 @@ a:hover{ color: var(--link-hover); }
   width: 100%;
 }
 .home-hero {
-  display: block !important;
-  max-width: 900px !important;
-  margin: 0 auto !important;
-  /* Use 'flow-root' to establish a new block context that supports floats */
-  display: flow-root !important; 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;      /* Force them to stay side-by-side */
+  justify-content: center; /* Centers the combined entity on the page */
+  align-items: flex-start !important; 
+  
+  /* The "Gap" creates the equal margin between photo and text */
+  gap: 60px;               
+  
+  margin: 0 auto !important; /* Removed fixed top/bottom margin */
+  width: 100%;
 }
 
 .home-hero .photo {
-  float: left !important;
-  width: 240px !important;
-  margin-right: 2rem !important;
-  margin-bottom: 1rem !important;
-  
-  /* Parameters for shape wrapping */
-  shape-outside: inset(0 0 0 0 round 12px) !important;
-  shape-margin: 1.5rem !important;
-  
-  /* Reset any flex-item behavior */
-  flex: none !important;
+  flex: 0 0 auto;          /* Prevents the photo container from growing */
 }
 
-.home-hero .photo {
-  float: left !important;
-  width: 240px !important;
-  margin-right: 2rem !important;
-  margin-bottom: 1rem !important;
-  
-  /* Parameters for shape wrapping */
-  shape-outside: inset(0 0 0 0 round 12px) !important;
-  shape-margin: 1.5rem !important;
-  
-  /* Reset any flex-item behavior */
-  flex: none !important;
+.home-hero .photo img {
+  width: 240px;
+  object-fit: cover;     /* Ensures image fills the frame without distortion */
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
 }
 
 .home-hero .content {
@@ -148,17 +142,12 @@ a:hover{ color: var(--link-hover); }
   flex-direction: column;
 }
 
-.home-hero .kicker,
-.home-hero .summary {
-  display: block !important;
-  margin: 0 !important;
-  width: auto !important;
-}
-
-.home-hero .summary {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  text-align: justify;
+.home-hero .kicker{
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 10px 0;
 }
 
 /*.home-hero h1{
@@ -210,9 +199,9 @@ a:hover{ color: var(--link-hover); }
 /* ===== Home boxed tabs (FORCE boxes) ===== */
 .home-hero .kicker,
 .home-tabs {
-  clear: both !important;
-  display: flex !important;
-  margin-top: 2rem !important;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .home-tabs .home-tab{
