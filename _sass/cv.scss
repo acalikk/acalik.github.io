@@ -8,6 +8,9 @@
 .cv-contact { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; font-size: .75rem; }
 .cv-contact a { color: var(--link); }
 .cv-hero-actions { display: flex; flex-direction: column; align-items: flex-end; gap: .8rem; white-space: nowrap; }
+.cv-section-nav { display: flex; flex-wrap: wrap; gap: .4rem 1.15rem; padding: .85rem 0; border-bottom: 1px solid var(--card-border); }
+.cv-section-nav a { color: var(--muted); font-size: .7rem; font-weight: 650; text-decoration: none; }
+.cv-section-nav a:hover { color: var(--link); }
 .cv-download { display: inline-flex; gap: .8rem; align-items: center; border-radius: 999px; background: var(--chip-sel); color: var(--chip-sel-text) !important; padding: .7rem 1rem; font-size: .75rem; font-weight: 700; text-decoration: none; }
 .cv-download:hover { background: var(--tab-hover); }
 .cv-secondary-link { font-size: .75rem; }
@@ -16,6 +19,9 @@
 .cv-section-heading { display: flex; align-items: baseline; gap: .7rem; margin-bottom: 1.5rem; }
 .cv-section-heading span { color: var(--project-accent); font-size: .7rem; font-weight: 800; letter-spacing: .08em; }
 .cv-section-heading h2, .cv-side-section h2 { margin: 0; color: var(--h1-text); font-size: 1.15rem; letter-spacing: .01em; }
+.cv-filters { display: flex; flex-wrap: wrap; gap: .35rem; margin: -.6rem 0 1.2rem; }
+.cv-filters .chip { padding: .35rem .65rem; border-radius: 999px; font-size: .65rem; cursor: pointer; }
+.cv-filterable[hidden] { display: none; }
 .cv-timeline { border-left: 1px solid var(--card-border); }
 .cv-entry { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 1.4rem; position: relative; padding: 0 0 2.1rem 1.4rem; }
 .cv-entry::before { content: ''; position: absolute; left: -4px; top: .3rem; width: 7px; height: 7px; border-radius: 50%; background: var(--project-accent); }
