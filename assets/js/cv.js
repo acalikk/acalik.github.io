@@ -1,7 +1,7 @@
 (() => {
   document.querySelectorAll('[data-filter-group]').forEach((group) => {
     const buttons = group.querySelectorAll('[data-filter]');
-    const section = group.closest('.cv-section');
+    const section = group.closest('.cv-section, .cv-side-section');
     const entries = section.querySelectorAll('.cv-filterable');
     buttons.forEach((button) => button.addEventListener('click', () => {
       const filter = button.dataset.filter;
