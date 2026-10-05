@@ -21,7 +21,7 @@
 .page__content .projects-intro > p:not(.projects-lead) { font-size: .88rem; line-height: 1.65; }
 .page__content .projects-lead { color: var(--h1-text); font-size: 1.35em; font-weight: 650; line-height: 1.35; margin-bottom: .7rem; }
 .project-controls { border-top: 1px solid var(--card-border); padding-top: 1.4rem; margin-bottom: 1.5rem; }
-.theme-toggle { position: relative; z-index: 3; flex: 0 0 auto; display: inline-flex; align-items: center; gap: .4rem; margin-left: 1rem; border: 1px solid var(--toggle-border); border-radius: 999px; background: var(--chip-bg); color: var(--chip-text); padding: .45rem .7rem; font-size: .72rem; line-height: 1.2; cursor: pointer; box-shadow: none; }
+.theme-toggle { position: relative; z-index: 3; flex: 0 0 2.5rem; display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; margin-left: 1rem; border: 1px solid var(--toggle-border); border-radius: 999px; background: var(--chip-bg); color: var(--chip-text); padding: 0; font-size: 1.15rem; line-height: 1; cursor: pointer; box-shadow: none; }
 .theme-toggle:hover { background: var(--tab-hover); }
 .theme-toggle__icon { font-size: 1rem; line-height: 1; }
 .project-controls[hidden], .project-card[hidden], .project-empty[hidden] { display: none !important; }

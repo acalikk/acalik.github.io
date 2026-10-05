@@ -11,7 +11,6 @@
     button.setAttribute('aria-pressed', String(dark));
     button.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
     button.querySelector('.theme-toggle__icon').textContent = dark ? '☀' : '☾';
-    button.querySelector('.theme-toggle__label').textContent = dark ? 'Light mode' : 'Dark mode';
     if (persist) localStorage.setItem(storageKey, dark ? 'dark' : 'light');
   };
   setTheme(stored || (prefersDark ? 'dark' : 'light'), false);
