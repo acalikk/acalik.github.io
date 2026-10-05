@@ -1,0 +1,22 @@
+---
+layout: single
+---
+<div class="project-detail">
+  <a class="project-back" href="{{ '/projects/' | relative_url }}">← All projects</a>
+  <p class="project-detail-summary">{{ page.summary }}</p>
+  <dl class="project-meta">
+    <div><dt>Context</dt><dd>{{ page.context }}</dd></div>
+    <div><dt>Period</dt><dd>{{ page.period }}</dd></div>
+    <div><dt>My role</dt><dd>{{ page.role }}</dd></div>
+  </dl>
+  <figure class="project-figure {{ page.figure_class | default: '' }}">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | escape }}">
+    <figcaption>{{ page.image_caption | escape }}</figcaption>
+  </figure>
+  <div class="project-story">{{ content }}</div>
+  <div class="project-methods">
+    <h2>Tools and methods</h2>
+    <ul class="project-skills">{% for tool in page.tools %}<li>{{ tool }}</li>{% endfor %}</ul>
+  </div>
+  <p class="project-back-footer"><a href="{{ '/projects/' | relative_url }}">← Explore the other projects</a></p>
+</div>

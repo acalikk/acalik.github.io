@@ -2,232 +2,57 @@
 layout: single
 title: Projects
 permalink: /projects/
-classes: wide
+classes: wide portfolio-projects
 ---
 
-A selection of projects with focus on **what I built**, **how I tested/validated**, and **measurable outcomes**.
-
-<div class="filters">
-  <div class="search-row">
-    <div class="search-input-wrapper">
-      <div class="filter-label">Search</div>
-      <input id="searchBox" type="search" placeholder="Search projects...">
-    </div>
-    <button id="clearBtn" type="button" class="btn btn--small">Clear</button>
-  </div>
-
-  <div class="filter-group">
-    <div class="filter-label">Areas</div>
-    <div id="areaBar" class="chip-container"></div>
-  </div>
-
-  <div class="filter-group">
-    <details id="tagPanel" open>
-      <summary class="filter-label">Tags</summary>
-      <div id="tagBar" class="chip-container"></div>
-      <div class="toggle-wrapper">
-        <button id="toggleMoreTags" type="button" class="btn btn--small">Show more</button>
-      </div>
-    </details>
-  </div>
-
-  <p id="resultCount" class="result-text"></p>
+<div class="projects-intro">
+  <p class="projects-lead">Biosensing, instrumentation, and biomedical data analysis.</p>
+  <p>I work across biomedical sensing, experimental instrumentation, and scientific computing. These projects show what I contributed, how I investigated technical problems, and what the results support.</p>
 </div>
 
-<div id="projectList" style="display:grid; grid-template-columns: repeat(12, 1fr); gap:14px;">
+<div class="project-controls" id="projectControls" hidden>
+  <div class="project-search">
+    <label for="searchBox">Find a method or skill</label>
+    <input id="searchBox" type="search" placeholder="Try Python, electrochemistry, or fabrication" autocomplete="off">
+  </div>
+  <fieldset class="project-filters">
+    <legend>Explore by area</legend>
+    <div class="project-filter-buttons">
+      <button type="button" class="chip" data-area="all" aria-pressed="true">All projects</button>
+      <button type="button" class="chip" data-area="biosensing" aria-pressed="false">Biosensing</button>
+      <button type="button" class="chip" data-area="instrumentation" aria-pressed="false">Instrumentation</button>
+      <button type="button" class="chip" data-area="data-analysis" aria-pressed="false">Data analysis</button>
+    </div>
+  </fieldset>
+  <div class="project-results-row">
+    <p id="resultCount" role="status" aria-live="polite" aria-atomic="true"></p>
+    <button id="clearBtn" type="button" class="project-reset">Reset filters</button>
+  </div>
+</div>
+
+<div class="project-grid" id="projectList">
   {% assign all_projects = site.projects | sort: "order" %}
   {% for p in all_projects %}
-    <article class="project-card" style="grid-column: span 12; padding:16px; border-radius:14px;"
-      data-title="{{ p.title | downcase }}"
-      data-subtitle="{{ p.subtitle | default: '' | downcase }}"
-      data-summary="{{ p.summary | default: p.excerpt | default: '' | downcase }}"
-      data-areas="{% if p.areas %}{{ p.areas | join: ',' | downcase | replace: ' & ', '-' | replace: ' ', '-' }}{% endif %}"
-      data-tags="{% if p.tags %}{{ p.tags | join: ',' | downcase }}{% endif %}"
-      data-tools="{% if p.tools %}{{ p.tools | join: ',' | downcase }}{% endif %}">
-
-      <h3 style="margin:0 0 6px 0;">
-        <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-      </h3>
-
-      {% if p.subtitle %}
-        <p style="margin:0; opacity:.85;">{{ p.subtitle }}</p>
-      {% endif %}
-
-      {% if p.summary %}
-        <p style="margin:10px 0 0 0;">{{ p.summary }}</p>
-      {% elsif p.excerpt %}
-        <p style="margin:10px 0 0 0;">{{ p.excerpt }}</p>
-      {% endif %}
-
-      <div style="margin-top:10px; font-size: 13px; opacity:.8;">
-        {% if p.areas %}<strong>Areas:</strong> {{ p.areas | join: " · " }}{% endif %}
-        {% if p.tools %}<span> · <strong>Tools:</strong> {{ p.tools | join: ", " }}</span>{% endif %}
-      </div>
-
-      {% if p.tags %}
-      <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;">
-        {% for t in p.tags %}
-          <span style="font-size:12px; padding:4px 10px; border-radius:999px;">{{ t }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </article>
+  <article class="project-card"
+    data-areas="{{ p.area_keys | join: ',' | escape }}"
+    data-search="{{ p.title | append: ' ' | append: p.summary | append: ' ' | append: p.context | escape }} {{ p.tools | join: ' ' | escape }} {{ p.skills | join: ' ' | escape }} {{ p.areas | join: ' ' | escape }}">
+    <a class="project-card-image {{ p.image_class | default: '' }}" href="{{ p.url | relative_url }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ p.image | relative_url }}" alt="" loading="lazy" width="640" height="360">
+    </a>
+    <div class="project-card-body">
+      <p class="project-context">{{ p.context }} <span>{{ p.card_period }}</span></p>
+      <h2><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+      <p class="project-summary">{{ p.summary }}</p>
+      <p class="project-evidence"><strong>{{ p.evidence_label | default: 'Outcome' }}:</strong> {{ p.evidence }}</p>
+      <ul class="project-skills" aria-label="Skills demonstrated">
+        {% for skill in p.skills %}<li>{{ skill }}</li>{% endfor %}
+      </ul>
+      <a class="project-read" href="{{ p.url | relative_url }}">Read the case study <span class="visually-hidden">— {{ p.title }}</span><span aria-hidden="true"> →</span></a>
+    </div>
+  </article>
   {% endfor %}
 </div>
 
-<script>
-/* projects-filter-v2 */
-(function () {
-  const cards = Array.from(document.querySelectorAll(".project-card"));
-  const searchBox = document.getElementById("searchBox");
-  const areaBar = document.getElementById("areaBar");
-  const tagBar = document.getElementById("tagBar");
-  const resultCount = document.getElementById("resultCount");
-  const clearBtn = document.getElementById("clearBtn");
-  const toggleMoreTagsBtn = document.getElementById("toggleMoreTags");
-
-  // Use URL-safe keys so we never fight '&' / escaping
-  const AREAS = [
-    { label: "Biosensing", key: "biosensing" },
-    { label: "Neuroengineering", key: "neuroengineering" },
-    { label: "Hardware & Testing", key: "hardware-testing" },
-    { label: "Data & Compute", key: "data-compute" }
-  ];
-
-  let selectedAreas = new Set(); // keys
-  let selectedTags = new Set();  // lowercase tags
-
-  const TOP_N = 12;
-  let showAllTags = false;
-
-  function splitList(s){
-    return (s || "")
-      .split(",")
-      .map(x => x.trim().toLowerCase())
-      .filter(Boolean);
-  }
-
-  function getTags(card){ return splitList(card.dataset.tags); }
-  function getAreas(card){ return splitList(card.dataset.areas); }
-
-  // Collect tag frequency for top tags
-  const tagCounts = new Map();
-  cards.forEach(c => getTags(c).forEach(t => tagCounts.set(t, (tagCounts.get(t) || 0) + 1)));
-  const sortedTags = Array.from(tagCounts.entries())
-    .sort((a,b) => b[1]-a[1] || a[0].localeCompare(b[0]))
-    .map(([t,_]) => t);
-
-  function makeChip(label, active, onClick){
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = label;
-    btn.className = "chip";
-    btn.style.cssText =
-      "padding:6px 10px;border-radius:999px;cursor:pointer;font-size:13px;" +
-      "border:1px solid rgba(127,127,127,.35);background:transparent;";
-    btn.setAttribute("aria-pressed", active ? "true" : "false");
-    btn.style.background = active ? "rgba(127,127,127,.18)" : "transparent";
-    btn.addEventListener("click", onClick);
-    return btn;
-  }
-
-  function renderAreas(){
-    areaBar.innerHTML = "";
-    AREAS.forEach(a => {
-      const active = selectedAreas.has(a.key);
-      const chip = makeChip(a.label, active, () => {
-        if (selectedAreas.has(a.key)) selectedAreas.delete(a.key);
-        else selectedAreas.add(a.key);
-        renderAreas();
-        filter();
-      });
-      areaBar.appendChild(chip);
-    });
-  }
-
-  function renderTags(){
-    tagBar.innerHTML = "";
-    const tagsToShow = showAllTags ? sortedTags : sortedTags.slice(0, TOP_N);
-
-    tagsToShow.forEach(t => {
-      const active = selectedTags.has(t);
-      const chip = makeChip(t, active, () => {
-        if (selectedTags.has(t)) selectedTags.delete(t);
-        else selectedTags.add(t);
-        renderTags();
-        filter();
-      });
-      tagBar.appendChild(chip);
-    });
-
-    toggleMoreTagsBtn.textContent = showAllTags ? "Show less" : "Show more";
-  }
-
-  function renderChips(){
-    renderAreas();
-    renderTags();
-  }
-
-  // OR logic
-  function matchesAreas(card){
-    if (selectedAreas.size === 0) return true;
-    const areas = new Set(getAreas(card));
-    for (const a of selectedAreas){
-      if (areas.has(a)) return true;
-    }
-    return false;
-  }
-
-  function matchesTags(card){
-    if (selectedTags.size === 0) return true;
-    const tags = new Set(getTags(card));
-    for (const t of selectedTags){
-      if (tags.has(t)) return true;
-    }
-    return false;
-  }
-
-  function filter(){
-    const q = (searchBox.value || "").trim().toLowerCase();
-    let visible = 0;
-
-    cards.forEach(c => {
-      const title = c.dataset.title || "";
-      const subtitle = c.dataset.subtitle || "";
-      const summary = c.dataset.summary || "";
-      const tags = c.dataset.tags || "";
-      const tools = c.dataset.tools || "";
-      const areas = c.dataset.areas || "";
-
-      const matchesSearch =
-        !q || title.includes(q) || subtitle.includes(q) || summary.includes(q) ||
-        tags.includes(q) || tools.includes(q) || areas.includes(q);
-
-      const show = matchesSearch && matchesAreas(c) && matchesTags(c);
-      c.style.display = show ? "" : "none";
-      if (show) visible++;
-    });
-
-    resultCount.textContent = `${visible} project${visible === 1 ? "" : "s"} shown`;
-  }
-
-  toggleMoreTagsBtn.addEventListener("click", () => {
-    showAllTags = !showAllTags;
-    renderTags();
-  });
-
-  clearBtn.addEventListener("click", () => {
-    searchBox.value = "";
-    selectedAreas = new Set();
-    selectedTags = new Set();
-    showAllTags = false;
-    renderChips();
-    filter();
-  });
-
-  searchBox.addEventListener("input", filter);
-
-  renderChips();
-  filter();
-})();
-</script>
+<p id="noProjects" class="project-empty" hidden>No projects match these filters. Try a broader term or reset the filters.</p>
+<p class="projects-closing">My background also includes analog circuit design and biomedical signal processing. <a href="{{ '/cv/' | relative_url }}">See my CV for the wider picture.</a></p>
+<script src="{{ '/assets/js/projects.js' | relative_url }}" defer></script>
